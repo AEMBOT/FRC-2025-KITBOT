@@ -12,7 +12,7 @@ import frc.robot.subsystems.CANDriveSubsystem;
 public class AutoCommand extends Command {
   CANDriveSubsystem driveSubsystem;
   private Timer timer;
-  private double seconds = 1.0;
+  private double seconds = 10;
 
   // Constructor. Runs only once when the command is first created.
   public AutoCommand(CANDriveSubsystem driveSubsystem) {
@@ -38,8 +38,12 @@ public class AutoCommand extends Command {
   @Override
   public void execute() {
     // drive at 1/2 speed
-    driveSubsystem.driveArcade(0.5, 0.0);
-  }
+    if (timer.get() < 3) {
+      driveSubsystem.driveArcade(-0.5, 0.0);
+    } else if (timer.get() < 5) {
+      driveSubsystem.driveArcade(0, 0.5);
+    }
+  } 
 
   // Runs each time the command ends via isFinished or being interrupted.
   @Override

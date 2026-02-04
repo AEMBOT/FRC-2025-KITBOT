@@ -17,7 +17,7 @@ public class CANRollerSubsystem extends SubsystemBase {
 
   public CANRollerSubsystem() {
     // spark max ID number
-    m_rollerMotor = new SparkMax(5, MotorType.kBrushed);
+    m_rollerMotor = new SparkMax(5, MotorType.kBrushless);
 
     m_rollerMotor.setCANTimeout(250);
     // spark max config

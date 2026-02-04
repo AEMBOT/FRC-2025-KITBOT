@@ -34,7 +34,7 @@ public class RobotContainer {
     // the drive command
     driveSubsystem.setDefaultCommand(new DriveCommand(
         () -> -driverController.getLeftY(),
-        () -> -driverController.getRightX(),
+        () -> -driverController.getRightY(),
         driveSubsystem));
     // the roller command
     rollerSubsystem.setDefaultCommand(new RollerCommand(

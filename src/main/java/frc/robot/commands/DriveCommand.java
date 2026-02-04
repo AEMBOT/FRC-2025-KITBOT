@@ -10,16 +10,16 @@ import java.util.function.DoubleSupplier;
 
 // Command to drive the robot with joystick inputs
 public class DriveCommand extends Command {
-  private final DoubleSupplier xSpeed;
-  private final DoubleSupplier zRotation;
+  private final DoubleSupplier leftStick;
+  private final DoubleSupplier rightStick;
   private final CANDriveSubsystem driveSubsystem;
 
   // Constructor. Runs only once when the command is first created.
   public DriveCommand(
-      DoubleSupplier xSpeed, DoubleSupplier zRotation, CANDriveSubsystem driveSubsystem) {
+      DoubleSupplier leftStick, DoubleSupplier rightStick, CANDriveSubsystem driveSubsystem) {
     // Save parameters to local variables for use later
-    this.xSpeed = xSpeed;
-    this.zRotation = zRotation;
+    this.leftStick = leftStick;
+    this.rightStick = rightStick;
     this.driveSubsystem = driveSubsystem;
 
     // Declare subsystems required by this command. This should include any
@@ -35,7 +35,7 @@ public class DriveCommand extends Command {
   // Runs every cycle while the command is scheduled (~50 times per second)
   @Override
   public void execute() {
-    driveSubsystem.driveArcade(xSpeed.getAsDouble(), zRotation.getAsDouble());
+    driveSubsystem.driveTank(leftStick.getAsDouble(), rightStick.getAsDouble());
   }
 
   // Runs each time the command ends via isFinished or being interrupted.

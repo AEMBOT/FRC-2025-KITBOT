@@ -58,4 +58,8 @@ public class CANDriveSubsystem extends SubsystemBase {
   public void driveArcade(double xSpeed, double zRotation) {
     m_robotDrive.arcadeDrive(xSpeed, zRotation);
   }
+  public void driveTank(double leftSpeed, double rightSpeed) {
+    m_robotDrive.tankDrive(leftSpeed, rightSpeed);
+  }
+  
 }
